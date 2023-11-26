@@ -1,0 +1,42 @@
+<div class="{% if section.settings.include_margins %}page-width{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+  {%- for block in section.blocks -%}
+    {% render block %}
+  {%- endfor -%}
+</div>
+
+{{ 'swiper-bundle.css' | asset_url | stylesheet_tag }}"
+
+<script src="{{ 'swiper-bundle.js' | asset_url }}" defer></script>
+{% schema %}
+{
+  "name": "Slider Products",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "include_margins",
+      "default": true,
+      "label": "t:sections.apps.settings.include_margins.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Proposal product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "proposal_product",
+          "label": "Out proposal product"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Slider Products"
+    }
+  ]
+}
+{% endschema %}
